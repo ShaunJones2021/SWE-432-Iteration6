@@ -1,0 +1,50 @@
+<nav class="sidebar">
+    <section class="navigation rcorners">
+
+        <a <% if (page_name==='home' ) {%>class = "active"<%} %> href = "/ben">
+                <img src="/images/vintage_logo.jpg" alt="Logo">
+        </a>
+        <a <% if (page_name==='home' ) {%>class = "active"<%} %> href = "/ben">
+                <i class="fa-solid fa-house"></i>
+                &ensp; Home
+        </a>
+        <!-- <a class="active" href="home">
+            <i class="fa-solid fa-house"></i>
+            &ensp; Home
+        </a> -->
+        <a <% if (page_name==='search' ) {%>class = "active"<%} %> href = "/search">
+                <span class="fa fa-search"></span>
+                &ensp; Search
+        </a>
+    </section>
+    <section class="navigation-end rcorners">
+        <p> <b> DJ's features </b></p>
+        <hr>
+        <ul>
+            <li>
+                <a href="#library">
+                    <i class="fa-solid fa-book"></i>
+                    &ensp; Library
+                </a>
+            </li>
+            <li>
+                <a <% if (page_name==='time-slot' ) {%>class = "active"<%} %> href = "/time-slot">
+                    <i class="fa-solid fa-clock"></i>
+                    &ensp; Time Slot
+                </a>
+            </li>
+            <li>
+                <a <% if (page_name==='calendar' ) {%>class = "active"<%} %> href = "/calendar">
+                    <i class="fa-regular fa-calendar"></i>
+                    &ensp; Calendar
+                </a>
+            </li>
+            <li>
+                <a <% if (page_name==='playlist' ) {%>class = "active"<%} %> href = "/playlist">
+                    <i class="fa-solid fa-list"></i>
+                    &ensp; Playlist
+                </a>
+            </li>
+        </ul>
+        <%- include('../partials/footer.ejs') %>
+    </section>
