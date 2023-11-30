@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/producer3.css">
+    <script src="https://kit.fontawesome.com/b8c98f18dc.js" crossorigin="anonymous"></script>
+    <title><%= pageTitle %></title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="side-nav">
+            <!-- ... (your existing code) ... -->
+            <ul class="nav-links">
+                <!-- ... (your existing code) ... -->
+                <li><form id="scheduleForm" action="/updateSchedule" method="post">
+                    <input type="hidden" name="djName" id="djNameInput" value="<%= djName %>">
+                    <input type="hidden" name="queue" id="queueInput" value="<%= queue %>">
+                    <input type="hidden" name="playlistName" id="playlistNameInput" value="">
+                    <input type="hidden" name="playlistImage" id="playlistImageInput" value="">
+                    <button type="submit">Schedule</button>
+                </form></li>
+                <!-- Dynamically set the playlist name in the Edit Playlist link -->
+                <li><a id="editPlaylistLink" href="#"><i class="fa-solid fa-list"></i><p>Edit Playlist</p></a></li>
+                <div class="active"></div>
+            </ul>
+        </div>
+
+        <div class="right">
+            <section class="body">
+                <div class="profile-feat">
+                    
+                    <button>Producer</button>
+                    
+                    <button ><i class="fa-regular fa-user"></i></button>
+                </div>
+
+                <div class="date">
+                    <p>Producer Playlists</p>
+                    <h1 class="Day">Featured Playlists</h1>
+                    <a class="audiobutton"href="#"><i class="fa-solid fa-plus"></i></i></a>
+                </div>
+
+                <div class="station-section">
+                    <div class="playlists">
+                        <% playlists.forEach((playlist) => { %>
+                            <div class="playlist-container" data-playlist-name="<%= playlist.name %>" data-playlist-image="<%= playlist.playlist_image %>">
+                                <img class="station-image" src="<%= playlist.playlist_image %>" alt="station">
+                            </div>
+                        <% }); %>
+                        <div class="playlist-container">
+                            <img class="station-image" src="/images/station_placeholder.jpg" alt="station">
+                        </div>
+                    </div>
+                    
+                    <footer class="feet">
+                        <div class="col1">
+                            <a href="#"><i class="fa-regular fa-copyright"></i></a>
+                        </div>
+                        <div class="col2">
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        </div>
+                    </footer>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script>
+        function changeTextColorAndBackground(event) {
+            const playlistContainers = document.querySelectorAll(".playlist-container");
+    
+            playlistContainers.forEach(function (container) {
+                container.style.backgroundColor = ''; // Reset background color for all containers
+            });
+    
+            const clickedContainer = event.currentTarget;
+            clickedContainer.style.backgroundColor = 'green'; // Set the background color of the clicked container to green
+    
+            // Extract the playlist name and image from the clicked container
+            const playlistName = clickedContainer.dataset.playlistName;
+            const playlistImage = clickedContainer.dataset.playlistImage;
+    
+            // Set the playlist name and image in the hidden form inputs
+            document.getElementById("playlistNameInput").value = playlistName;
+            document.getElementById("playlistImageInput").value = playlistImage;
+            
+            // Dynamically set the playlist name in the Edit Playlist link
+            const editPlaylistLink = `/producer4?playlistName=${encodeURIComponent(playlistName)}`;
+            document.getElementById("editPlaylistLink").href = editPlaylistLink;
+        }
+    
+        document.addEventListener("DOMContentLoaded", function () {
+            const playlistContainers = document.querySelectorAll(".playlist-container");
+    
+            playlistContainers.forEach(function (container) {
+                container.addEventListener("click", changeTextColorAndBackground);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

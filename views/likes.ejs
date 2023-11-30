@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/common.css">
+    <script src="../javascript/lazy-images.js"></script>
+    <script src="../javascript/listener-open.js"></script>
+    <script src="../javascript/profile_features.js"></script>
+    <script src="../javascript/search_valid.js"></script>
+    <script src="/javascript/songplayer.js"></script>
+    <title>Liked</title>
+</head>
+<body>
+    <audio id="myAudio" src="/audio/my-love-mine-all-mine.mp3"></audio>
+    <div class="container">
+        <div class="left">
+            <div class="logo-search">
+                <a href="#"><img src="images/vintage_logo.jpg" alt="Site Logo"></img></a>
+                <input type="text" placeholder="search">
+                <button type="submit">Search</button>
+            </div>
+            
+            <aside class="user-feat">
+                <div>
+                    <a href="/shaun">
+                        <img src="images/book.png" alt="book"></img>
+                        <p>Home</p>
+                    </a>
+                </div>
+                <div>  
+                    <a href="#">
+                        <img src="images/help.png" alt="help"></img>
+                        <p>Help</p>
+                    </a>
+                </div>
+                <div id="listener-closed">  
+                    <!-- <a href="#"> -->
+                        <img src="images/help.png" alt="help"></img>
+                        <p>Listener</p>
+                        <img src="images/dropdown_arrow.png" alt="dropdown arrow">
+                    <!-- </a> -->
+                </div>
+            </aside>
+        </div>
+        <div class="right">
+            <section class="body">
+                <div class="profile-feat">
+                    <button class="control-buttons" type="submit" name="backwards"><img src="images/skip_backward.png" alt="skip backwards"></img></button>
+                    <button class="control-buttons" type="submit" name="play"><img id="play" src="images/play_button.png" alt="play"></img></button>
+                    <button class="control-buttons" type="submit" name="forward"><img src="images/skip_forward.png" alt="skip forward"></img></button>
+                    <button type="submit" name="unmuted"><img src="images/unmuted.png" alt="unmuted"></img></button>
+                    <input type="range"></input>
+                    <button>Listener</button>
+                    <button id="profile-pic" type="submit" onclick="location.href = '/';"><img src="images/profile.png" alt="profile icon"></button>
+                </div>
+                <div class="station-section">
+                    <h1>Liked:</h1>
+                    <% playlists.forEach((playlist) => { %>
+                        <section>
+                            <h2><%= playlist.name %></h2>
+                            <% playlist.songs.forEach((song) => { %>
+                                <a href="/station?id=<%=song._id%>" >
+                                    <img src="<%= song.image %>" alt="station"></img>
+                                    <p class="station-name"><%= song.name %></p>
+                                    <p class="dj-name"><%= playlist.dj_name %></p>
+                                </a>
+                            <% }); %>
+                        </section>
+                    <% }); %>
+                </div>
+            </section>
+        </div>
+
+        <footer class="socials">
+            <a href="#"><img src="images/copyright.png" alt="copyright">Copyright Date</a>
+            <a href="#"><img src="images/instagram.png" alt="instagram logo">Instagram</a>
+            <a href="#"><img src="images/twitter.png" alt="twitter logo">Twitter</a>
+            <a href="#"><img src="images/facebook.png" alt="facebook logo">Facebook</a>
+        </footer>
+    </div>
+</body>
+</html>

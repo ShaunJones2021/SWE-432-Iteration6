@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/producer1.css">
+    <script src="https://kit.fontawesome.com/b8c98f18dc.js" crossorigin="anonymous"></script>
+    <title><%= pageTitle %></title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="side-nav">
+            <a href="#" class="logo">
+                <img src="/images/vintage_logo.jpg" class="logo-img" alt="Site Logo">
+                <input type="text" placeholder="search">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#"><i class="fa-solid fa-book"></i><p>Library</p></a></li>
+                <li><a href="#"><i class="fa-solid fa-circle-info"></i><p>Help</p></a></li>
+                <li><a href="/brandon"><p>Producer's Features</p></a></li>
+                <li><a href="#"><p class="one">1) </p><i class="fa-solid fa-record-vinyl"></i><p class="oneone">Time Slot</p></a></li>
+                <li><a href="#"><p>2) </p><i class="fa-solid fa-microphone"></i><p>DJ</p></a></li>
+                <li><a href="#"><p>3) </p><i class="fa-solid fa-list"></i><p>Playlist</p></a></li>
+                <li><a href="#"><p>Schedule</p></a></li>
+                <li><a href="/producer4"><i class="fa-solid fa-list"></i><p>Edit Playlist</p></a></li>
+                <div class="active"></div>
+            </ul>
+        </div>
+
+        <div class="right">
+            <section class="body">
+                <div class="profile-feat">
+                    <button><i class="fa-solid fa-backward"></i></button>
+
+                    <button><i class="fa-solid fa-pause"></i></button>
+
+                    <button><i class="fa-solid fa-forward"></i></button>
+
+                    <button><i class="fa-solid fa-volume-xmark"></i></button>
+                    <input type="range">
+                    <button>Producer</button>
+                    
+                    <button  onclick="location.href = '/';"><i class="fa-regular fa-user"></i></button>
+                </div>
+
+                <div class="date">
+                    <a class="leftbutton" href="#" id="prevDayButt"><i class="fa-solid fa-chevron-left"></i></a>
+                    <h1 class="Day" id="dateDisplay">Loading...</h1>
+                    <a class="rightbutton" href="#" id="nextDayButt"><i class="fa-solid fa-chevron-right"></i></a>
+                    <a class="audiobutton"href="#" ><i class="fa-solid fa-plus"></i></i></a>
+                </div>
+
+                <div class="station-section">
+                    <ul class="station-list">
+                        <% schedule.forEach((playlist) => { %>
+                            <li class="station-item" data-queue="<%= playlist.queue %>">
+                                <a href="/producer2?queue=<%= playlist.queue %>" class="station-link">
+
+                                    <div class="station-image-container">
+                                        <img class="station-image" src="<%= playlist.playlist_image %>" alt="station">
+                                    </div>
+                                    <div class="station-details">
+                                        <p class="dj-name">DJ: <%= playlist.dj_name %></p>
+                                        <p class="playlist-name">Playlist: <%= playlist.name %></p>
+                                    </div>
+                                    <div class="minus">
+                                        <a href="#"><i class="fa-solid fa-minus"></i></a>
+                                    </div>
+                                </a>
+                            </li>
+                            <% }); %>
+                        <li class="station-item">
+                            <a href="/producer2" class="station-link">
+                                <div class="station-image-container">
+                                    <img class="station-image" src="/images/station_placeholder.jpg" alt="station">
+                                </div>
+                                <div class="station-details">
+                                    <p class="dj-name">DJ: DJ Name</p>
+                                    <p class="playlist-name">Playlist: Yoda Name</p>
+                                    <p class="playlist-length">Playlist Length: 2:00:00</p>
+                                </div>
+                                <div class="minus">
+                                    <a href="#"><i class="fa-solid fa-minus"></i></a>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <footer class="feet">
+                        <div class="col1">
+                            <a href="#"><i class="fa-regular fa-copyright"></i></a>
+                        </div>
+                        <div class="col2">
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        </div>
+                    </footer>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script>
+        // Initialize date and day offset
+        let currentDate = new Date();
+        let dayOffset = 0;
+
+        // Get references to HTML elements
+        const dateDisplay = document.getElementById("dateDisplay");
+        const prevDayButton = document.getElementById("prevDayButt");
+        const nextDayButton = document.getElementById("nextDayButt");
+
+        // Function to update the date display
+        // Function to update the date display with extra text
+        function updateDateDisplay() {
+            const newDate = new Date();
+            newDate.setDate(currentDate.getDate() + dayOffset);
+
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = newDate.toLocaleDateString(undefined, options);
+
+            // Add extra text after the formatted date
+            const extraText = " 12:00 AM to 12:00 PM"; // Modify this as needed
+
+            // Concatenate the date and extra text
+            const displayText = formattedDate + extraText;
+
+            dateDisplay.textContent = displayText;
+        }
+
+
+        // Event listeners for previous and next day buttons
+        prevDayButton.addEventListener("click", () => {
+            dayOffset--;
+            updateDateDisplay();
+        });
+
+        nextDayButton.addEventListener("click", () => {
+            dayOffset++;
+            updateDateDisplay();
+        });
+
+        // Initial date display
+        updateDateDisplay();
+    </script>
+    <!-- Add this script at the end of your HTML, just before the closing </body> tag -->
+    <script>
+        // List of bad words to check against
+        const badWords = ["badword1", "badword2", "badword3"]; // Replace with your list of bad words
+    
+        // Get a reference to the input field
+        const searchInput = document.querySelector('input[type="text"]');
+    
+        // Add an input event listener to the input field
+        searchInput.addEventListener('input', () => {
+        // Get the current input value
+        const inputValue = searchInput.value;
+    
+        // Check if the input exceeds 30 characters
+        if (inputValue.length > 30) {
+            alert("Input should not exceed 30 characters.");
+            searchInput.value = inputValue.substring(0, 30); // Truncate to 30 characters
+        }
+    
+        // Check for bad words
+        if (containsBadWord(inputValue)) {
+            alert("Input contains a bad word. Please remove it.");
+            // You can choose to clear the input or handle it as needed
+            searchInput.value = '';
+        }
+        });
+    
+        // Function to check if the input contains bad words
+        function containsBadWord(input) {
+        const inputLower = input.toLowerCase(); // Convert input to lowercase for case-insensitive check
+        return badWords.some(word => inputLower.includes(word));
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const minusIcons = document.querySelectorAll(".minus"); // Change the class name here
+
+    minusIcons.forEach(function (minusIcon) {
+        minusIcon.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Get the parent station-item
+            const stationItem = event.target.closest(".station-item");
+
+            // Extract queue number from the data attribute
+            const queue = stationItem.dataset.queue;
+
+            // Update the schedule document to the default values
+            updateScheduleToDefault(queue);
+        });
+    });
+
+    function updateScheduleToDefault(queue) {
+        // Use fetch or any other method to send a POST request to your server
+        fetch('/updateScheduleToDefault', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ queue }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Schedule updated to default:', data);
+                // Optionally, you can handle the response or perform other actions
+            })
+            .catch(error => {
+                console.error('Error updating schedule:', error);
+                // Handle the error as needed
+            });
+    }
+});
+
+    </script>
+    
+  
+</body>
+
+</html>

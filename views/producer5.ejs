@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/producer5.css">
+    <script src="https://kit.fontawesome.com/b8c98f18dc.js" crossorigin="anonymous"></script>
+    <title><%= pageTitle %></title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="side-nav">
+            <a href="#" class="logo">
+                <img src="/images/vintage_logo.jpg" class="logo-img" alt="Site Logo">
+                <input type="text" placeholder="search">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#"><i class="fa-solid fa-book"></i><p>Library</p></a></li>
+                <li><a href="#"><i class="fa-solid fa-circle-info"></i><p>Help</p></a></li>
+                <li><a href="#"><p>Producer's Features</p></a></li>
+                <li><a href="#"><p>1) </p><i class="fa-solid fa-record-vinyl"></i><p>Time Slot</p></a></li>
+                <li><a href="#"><p>2) </p><i class="fa-solid fa-microphone"></i><p>DJ</p></a></li>
+                <li><a href="#"><p>3) </p><i class="fa-solid fa-list"></i><p>Playlist</p></a></li>
+                <li><a href="#"><p>Schedule</p></a></li>
+                <li><a href="#"><i class="fa-solid fa-list"></i><p>Edit Playlist</p></a></li>
+                <div class="active"></div>
+            </ul>
+        </div>
+
+        <div class="right">
+            <section class="body">
+                <div class="profile-feat">
+                    <input type="text" placeholder="search for your playlist">
+                    <button>Producer</button>
+                    
+                    <button onclick="location.href = '/';"><i class="fa-regular fa-user"></i></button>
+                </div>
+
+
+                <div class="station-section">
+                    <h1>Recent Searches</h1>
+                    <div class="playlists">
+                        <a href="/">
+                            <div class="playlist-container">
+                                <img class="station-image" src="/images/station_placeholder.jpg" alt="station">
+                            </div>
+                        </a>
+                        <a href="/">
+                            <div class="playlist-container">
+                                <img class="station-image" src="/images/station_placeholder.jpg" alt="station">
+                            </div>
+                        </a>
+                        <a href="/">
+                            <div class="playlist-container">
+                                <img class="station-image" src="/images/station_placeholder.jpg" alt="station">
+                            </div>
+                        </a>
+                    </div>
+                    <h1>All</h1>
+<div class="playlists">
+  <% songs.forEach(song => { %>
+    <a href="/updatePlaylist?songId=<%= song._id %>&playlistName=<%= playlistName %>&songName=<%= song.name %>&artist=<%= song.artist %>&artistImage=<%= song.image %>&audioFile=<%= song.audio %>">
+      <div class="playlist-container">
+        <img class="station-image" src="<%= song.image %>" alt="<%= song.name %>">
+        <!-- You can customize the alt text and image source based on your song document structure -->
+        <p><%= song.name %></p>
+        <p><%= song.artist %></p>
+      </div>
+    </a>
+  <% }); %>
+</div>
+                    
+                    <footer class="feet">
+                        <div class="col1">
+                            <a href="#"><i class="fa-regular fa-copyright"></i></a>
+                        </div>
+                        <div class="col2">
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        </div>
+                    </footer>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<script>
+    function removeSong(songName, playlistName) {
+      // Make an AJAX request to the server to remove the song
+      fetch(`/removeSongFromPlaylist?songName=${songName}&playlistName=${playlistName}`)
+        .then(response => response.json())
+        .then(data => {
+          // Handle the response
+          console.log(data);
+
+          // Update the UI by removing the corresponding song item
+          const songItem = document.getElementById(`song_${songName}`);
+          if (songItem) {
+            songItem.remove();
+          }
+          window.location.href = '/'; // Change this URL based on your route
+        })
+        .catch(error => {
+          console.error(error);
+          // Handle errors if necessary
+        });
+    }
+</script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/producer4.css">
+    <script src="https://kit.fontawesome.com/b8c98f18dc.js" crossorigin="anonymous"></script>
+    <title><%= pageTitle %></title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="side-nav">
+            <a href="#" class="logo">
+                <img src="/images/vintage_logo.jpg" class="logo-img" alt="Site Logo">
+                <input type="text" placeholder="search">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#"><i class="fa-solid fa-book"></i><p>Library</p></a></li>
+                <li><a href="#"><i class="fa-solid fa-circle-info"></i><p>Help</p></a></li>
+                <li><a href="/"><p>Producer's Features</p></a></li>
+                <li><a href="/producer1"><p>1) </p><i class="fa-solid fa-record-vinyl"></i><p>Time Slot</p></a></li>
+                <li><a href="#"><p>2) </p><i class="fa-solid fa-microphone"></i><p>DJ</p></a></li>
+                <li><a href="#"><p>3) </p><i class="fa-solid fa-list"></i><p>Playlist</p></a></li>
+                <li><a href="#"><p>Schedule</p></a></li>
+                <li><a href="#"><i class="fa-solid fa-list"></i><p>Edit Playlist</p></a></li>
+                <div class="active"></div>
+            </ul>
+        </div>
+
+        <div class="right">
+            <section class="body">
+                <div class="profile-feat">
+                    <button><i class="fa-solid fa-backward"></i></button>
+
+                    <button><i class="fa-solid fa-pause"></i></button>
+
+                    <button><i class="fa-solid fa-forward"></i></button>
+
+                    <button><i class="fa-solid fa-volume-xmark"></i></button>
+                    <input type="range">
+                    <button>Producer</button>
+                    
+                    <button onclick="location.href = '/';"><i class="fa-regular fa-user"></i></button>
+                </div>
+
+                <div class="date">
+                    <div class="update">
+                        <p>Last Updated:</p>
+                        <p>09/10/2023 11:00AM</p>
+                    </div>
+                    <h1 class="Day"><%= playlist.name %></h1>
+                    <a class="audiobutton" href="/producer5?playlistName=<%= playlist.name %>"><i class="fa-solid fa-plus"></i></a>
+
+                </div>
+                
+                <div class="station-section">
+                    <ul class="station-list">
+                        <% playlist.songs.forEach((song) => { %>
+                            <li class="station-item">
+                                <a href="/producer5" class="station-link">
+                                    <div class="station-image-container">
+                                        <img class="station-image" src="<%= song.image %>" alt="station">
+                                    </div>
+                                    <div class="station-details">
+                                        <p class="dj-name"><%= song.name %></p>
+                                        <p class="playlist-name"><%= song.artist %></p>
+                                        <p class="playlist-length"><%= song.duration %></p>
+                                    </div>
+                                    <div class="minus">
+                                        <a href="#" onclick="removeSong('<%= song.name %>', '<%= playlist.name %>')">
+                                            <i class="fa-solid fa-minus"></i>
+                                        </a>
+                                      </div>
+                                </a>
+                            </li>
+                        <% }); %>
+                    </ul>
+                
+                    <h1 class="date2">These are the songs in the current playlist</h1>
+                    <footer class="feet">
+                        <div class="col1">
+                            <a href="#"><i class="fa-regular fa-copyright"></i></a>
+                        </div>
+                        <div class="col2">
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        </div>
+                    </footer>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

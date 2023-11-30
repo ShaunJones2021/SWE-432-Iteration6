@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/common_page.css">
+    <script src="https://kit.fontawesome.com/b8c98f18dc.js" crossorigin="anonymous"></script>
+    <title><%= pageTitle %></title>
+</head>
+<body>
+    <div class="container">
+        <div class="side-nav">
+            <a href="#" class="logo">
+                <img src="/images/vintage_logo.jpg" class="logo-img" alt="Site Logo">
+                <input type="text" placeholder="search">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#"><i class="fa-solid fa-book"></i><p>Library</p></a></li>
+                <li><a href="#"><i class="fa-solid fa-circle-info"></i><p>Help</p></a></li>
+                <li><a href="#" id="userIcon" onclick="openProducerDialog()"><i class="fa-regular fa-user"></i><p>User</p></a></li>
+                <div class="active"></div>
+            </ul>
+        </div>
+
+        <div class="right">
+            <section class="body">
+                <div class="profile-feat">
+                    <input type="text" placeholder="search for your playlist">
+                    <a href="/producer1" class="html_hop">Producer</a>
+
+                    <button  onclick="location.href = '/';"><i class="fa-regular fa-user"></i></button>
+                </div>
+
+                <div class="station-section">
+                    <!-- Dialog Box -->
+                    <dialog id="producerDialog">
+                        <h2>You are the Producer</h2>
+                        <button id="closeProducerDialog" onclick="closeProducerDialog()">Close</button>
+                    </dialog>
+
+                        <% playlists.forEach((playlist) => { %>
+						<h1><%= playlist.name %></h1>
+							<div class="playlists">
+								<% playlist.songs.forEach((song) => { %>
+                                    <div class="playlist-container">
+                                        <% console.log('Image Path:', song.image); %>
+                                        <% console.log('Audio Path:', song.audio); %>
+                                        <img class="station-image" src="<%= song.image %>" alt="station">
+                                        <audio controls class="audiofile">
+                                            <source src="<%= song.audio %>" type="audio/mpeg">
+                                        </audio>
+                                    </div>
+                                <% }); %>
+							</div>
+                        <% }); %>
+                    
+                    <footer class="feet">
+                        <div class="col1">
+                            <a href="#"><i class="fa-regular fa-copyright"></i></a>
+                        </div>
+                        <div class="col2">
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        </div>
+                    </footer>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    
+    <script>
+        const producerDialog = document.getElementById('producerDialog');
+        const closeProducerDialogButton = document.getElementById('closeProducerDialog');
+
+        
+        function openProducerDialog() {
+            producerDialog.showModal();
+        }
+
+        
+        function closeProducerDialog() {
+            producerDialog.close();
+        }
+    </script>
+</body>
+</html>

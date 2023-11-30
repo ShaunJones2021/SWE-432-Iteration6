@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/preference.css">
+    <script src="/javascript/lazy-images.js"></script>
+    <script src="/javascript/listener-open.js"></script>
+    <script src="/javascript/profile_features.js"></script>
+    <script src="/javascript/search_valid.js"></script>
+    <script src="/javascript/songplayer.js"></script>
+    <title>Preferences</title>
+</head>
+<body>
+    <audio id="myAudio" src="/audio/my-love-mine-all-mine.mp3"></audio>
+    <div class="container">
+        <div class="left">
+            <div class="logo-search">
+                <a href="#"><img src="/images/vintage_logo.jpg" alt="Site Logo"></img></a>
+                <input type="text" placeholder="search">
+                <button type="submit">Search</button>
+            </div>
+            
+            <aside class="user-feat">
+                <div>
+                    <a href="/shaun">
+                        <img src="/images/book.png" alt="book"></img>
+                        <p>Home</p>
+                    </a>
+                </div>
+                <div>  
+                    <a href="#">
+                        <img src="/images/help.png" alt="help"></img>
+                        <p>Help</p>
+                    </a>
+                </div>
+                <div id="listener-closed">  
+                    <!-- <a href="#"> -->
+                        <img src="/images/help.png" alt="help"></img>
+                        <p>Listener</p>
+                        <img src="/images/dropdown_arrow.png" alt="dropdown arrow">
+                    <!-- </a> -->
+                </div>
+            </aside>
+        </div>
+        <div class="right">
+            <section class="body">
+                <div class="profile-feat">
+                    <button class="control-buttons" type="submit" name="backwards"><img src="/images/skip_backward.png" alt="skip backwards"></img></button>
+                    <button class="control-buttons" type="submit" name="pause"><img id="play" src="/images/play_button.png" alt="play"></img></button>
+                    <button class="control-buttons" type="submit" name="forward"><img src="/images/skip_forward.png" alt="skip forward"></img></button>
+                    <button type="submit" name="unmuted"><img src="/images/unmuted.png" alt="unmuted"></img></button>
+                    <input type="range"></input>
+                    <button>Listener</button>
+                    <button id="profile-pic" type="submit" onclick="location.href = '/';"><img src="images/profile.png" alt="profile icon"></button>
+                </div>
+                <div class="station-section">
+                    <section>
+                        <h2>Preferences:</h2>
+                        <form method="POST" action="/api/preference/6559068ae7e3c723f776d67a">
+                            <div>
+                                <label for="genre">Genre</label>
+                                <select class="first" name="genre" id="genre">
+                                    <option value="">Pop</option>
+                                    <option value="">RNB</option>
+                                    <option value="">Rock</option>
+                                    <option value="">Lo-Fi</option>
+                                    <option value="">Jazz</option>
+                                </select>
+                                <button type="submit" style="width:100px; height:30px; float:right" onclick="alert('Your Preferences Have Been Saved!')">Save</button>
+                            </div>
+                            <div>
+                                <label for="language">Language</label>
+                                <select class="first" name="language" id="language">
+                                    <option value="">English</option>
+                                    <option value="">Spanish</option>
+                                    <option value="">Chinese</option>
+                                    <option value="">Japanese</option>
+                                    <option value="">Dutch</option>
+                                    <option value="">German</option>
+                                    <option value="">French</option>
+                                    <option value="">Arabic</option>
+                                    <option value="">Turkish</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="autoplay">Autoplay</label>
+                                <input type="checkbox" name="autoplay" id="autoplay" value="true" <%= updatedPreference.autoplay ? 'checked' : '' %>>
+                            </div>
+                            <div>
+                                <label for="explicit">Explicit Content</label>
+                                <input type="checkbox" name="explicit" id="explicit">
+                            </div>
+                            
+                            <fieldset>
+                                <legend>Audio Quality</legend>
+                                <label for="streaming quality">Streaming Quality</label>
+                                <select name="streaming-quality" id="streaming-quality"></select>
+                                <label for="download">Download</label>
+                                <select name="download" id="download"></select>
+                                <div>
+                                    <label for="auto-adj">Auto Adjust Quality</label>
+                                    <input type="checkbox" name="auto-adj" id="auto-adj">
+                                </div>
+                                <div>
+                                    <label for="norm-vol">Normalize Volume</label>
+                                    <input type="checkbox" name="norm-vol" id="norm-vol">
+                                </div>
+                                <label for="vol-lvl">Volume Level</label>
+                                <select name="vol-lvl" id="vol-lvl"></select>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Social</legend>
+                                <div>
+                                    <label for="con-face">Connect To Facebook</label>
+                                    <input type="checkbox" name="con-face" id="con-face">
+                                </div>
+                                <div>
+                                    <label for="priv">Start Private Session</label>
+                                    <input type="checkbox" name="priv" id="priv">
+                                </div>
+                                <div>
+                                    <label for="activity">Share My Listening Activity</label>
+                                    <input type="checkbox" name="activity" id="activity">
+                                </div>
+                                <div>
+                                    <label for="recent_plays">Show My Recent Plays</label>
+                                    <input type="checkbox" name="recent_plays" id="recent_plays">
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Playback</legend>
+                                <div>
+                                    <label for="cross">Crossfade Songs</label>
+                                    <input type="checkbox" name="cross" id="cross">
+                                </div>
+                                <div>
+                                    <label for="automix">Automix - allow seemless transitions between stations</label>
+                                    <input type="checkbox" name="automix" id="automix">
+                                </div>
+                                <div>
+                                    <label for="mono">Mono-auto</label>
+                                    <input type="checkbox" name="mono" id="mono">
+                                </div>
+                                <div>
+                                    <label for="equalize">Equalizer</label>
+                                    <input type="checkbox" name="equalize" id="equalize">
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Startup Window Behavior</legend>
+                                <div>
+                                    <label for="open">Open Automatically Upon Starting Web Browser</label>
+                                    <select name="open" id="open">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                    <div>
+                                        <label for="minimize">Close Button Should Minimize Site Radio</label>
+                                        <input type="checkbox" name="minimize" id="minimize">
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Storage</legend>
+                                <div>
+                                    <label for="down">Downloads</label>
+                                    <select name="down" id="down">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </section>
+                </div>
+            </section>
+        </div>
+
+        <footer class="socials">
+            <a href="#"><img src="/images/copyright.png" alt="copyright">Copyright Date</a>
+            <a href="#"><img src="/images/instagram.png" alt="instagram logo">Instagram</a>
+            <a href="#"><img src="/images/twitter.png" alt="twitter logo">Twitter</a>
+            <a href="#"><img src="/images/facebook.png" alt="facebook logo">Facebook</a>
+        </footer>
+    </div>
+</body>
+</html>

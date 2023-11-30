@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/common.css">
+    <link rel="stylesheet" href="../style/station_page.css">
+    <script src="../javascript/listener-open.js"></script>
+    <script src="../javascript/search_valid.js"></script>
+    <script src="/javascript/songplayer.js"></script>
+    <title>Station Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="logo-search">
+                <a href="#"><img src="images/vintage_logo.jpg" alt="Site Logo"></img></a>
+                <input type="text" placeholder="search">
+                <button type="submit">Search</button>
+            </div>
+            <aside class="user-feat">
+                <div>
+                    <a href="/shaun">
+                        <img src="images/book.png" alt="book"></img>
+                        <p>Home</p>
+                    </a>
+                </div>
+                <div>  
+                    <a href="#">
+                        <img src="images/help.png" alt="help"></img>
+                        <p>Help</p>
+                    </a>
+                </div>
+                <div id="listener-closed">  
+                    <!-- <a href="#"> -->
+                        <img src="images/help.png" alt="help"></img>
+                        <p>Listener</p>
+                        <img src="images/dropdown_arrow.png" alt="dropdown arrow">
+                    <!-- </a> -->
+                </div>
+            </aside>
+        </div>
+        <div class="right-station">
+            <div class="station-header">
+                <div class="station-info">
+                    <div>
+                        <ul>
+                            <li>Song Name: <%=song.name%></li>
+                            <li>Artist: <%=song.artist%></li>
+                            <li>Listeners: 1000</li>
+                            <li>This is a brief description of the company</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="user-buttons">
+                    <button>Listener</button>
+                    <button id="profile-pic" type="submit" onclick="location.href = '/';"><img src="images/profile.png" alt="profile icon"></button>
+                </div>
+            </div>
+            <div class="scrollable">
+                <div class="station-body">
+                    <div>
+                        <h2>Station: <%=song.name%></h2>
+                    </div>
+                    <div class="station-logo">
+                        <img src="<%= song.image%>" alt="station logo">
+                    </div>
+                </div>
+                <div class="station-playbar">
+                    <!-- <button class="control-buttons" type="submit"><img src="images/skip_backward.png" alt="skip backwards"></img></button>
+                    <button class="control-buttons" type="submit"><img id="play" src="images/play_button.png" alt="play"></img></button>
+                    <button class="control-buttons" type="submit"><img src="images/skip_forward.png" alt="skip forwards"></img></button> -->
+                    <audio id="myAudio" src="<%=song.audio%>" controls></audio>
+                </div>
+            </div>
+        </div>
+
+        <footer class="socials">
+            <a href="#"><img src="images/copyright.png" alt="copyright">Copyright Date</a>
+            <a href="#"><img src="images/instagram.png" alt="instagram logo">Instagram</a>
+            <a href="#"><img src="images/twitter.png" alt="twitter logo">Twitter</a>
+            <a href="#"><img src="images/facebook.png" alt="facebook logo">Facebook</a>
+        </footer>
+    </div>
+</body>
+</html>
