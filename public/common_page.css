@@ -1,0 +1,489 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: black;
+}
+
+.profile-feat input{
+    font-size: 40px
+}
+
+.container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 3fr;
+}
+
+.service-list {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    display: inline-block;
+}
+
+.service-list img {
+    float: left;
+}
+
+.service-list p,
+.service-list h3 {
+    text-align: right;
+    display: inline-block;
+    padding: 0;
+}
+
+.left {
+    border-radius: .75em;
+    background-color: rgb(28, 28, 28);
+}
+
+.left aside {
+    height: 75%;
+}
+
+.left .logo-search {
+    height: 25%;
+}
+
+.right {
+    border-radius: .75em;
+    background-color: rgb(21, 21, 21);
+}
+
+.logo-search {
+    display: grid;
+}
+
+.logo-search img,
+.logo-search a {
+    align-self: center;
+    justify-self: center;
+    width: 150px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.user-feat {
+    display: grid;
+    grid-row: 2;
+    grid-column: 1;
+    grid-template-rows: repeat(9, 1fr);
+}
+
+.user-feat div {
+    display: inline-block;
+    text-align: center;
+}
+
+.user-feat p {
+    display: inline-block;
+    text-align: center;
+}
+
+.user-feat a {
+    margin: .75em;
+    position: relative;
+    align-self: center;
+    justify-self: center;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    width: 90%;
+    color: white;
+    border-radius: 5px;
+}
+
+
+.html_hop{
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    padding-left: 70px;
+    color: inherit;
+}
+
+
+.profile-feat {
+    border-radius: 0.75em;
+    background-color: rgb(28, 28, 28);
+    color: white;
+    display: grid;
+    grid-template-columns: 6fr .1fr .1fr;
+}
+
+.profile-feat button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    outline: inherit;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    margin: .5em;
+    width: 9em;
+    height: 3.5em;
+    border-radius: .75em;
+    font-size: 1rem;
+}
+
+.profile-feat button:hover {
+    cursor: pointer;
+}
+
+.profile-feat #play {
+    width: 2.3em;
+    height: 2.3em;
+    padding: 0;
+}
+
+.profile-feat #profile-pic {
+    width: 6em;
+}
+
+.profile-feat button:hover {
+    background-color: rgb(40, 40, 40);
+}
+
+.profile-feat img {
+    padding: .75em;
+    width: 25px;
+    height: 25px;
+}
+
+.body {
+    display: grid;
+}
+
+.body h2 {
+
+}
+
+.body div section {
+
+}
+
+.body .station-section img,
+.body a {
+
+}
+
+.station-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.station-section {
+    background-color: rgb(28, 28, 28);
+    color: white;
+    padding: 1rem;
+    overflow-y: scroll;
+}
+
+.station-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.station-item {
+    margin-bottom: 1rem;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr .05fr;
+}
+
+.station-item-container {
+    display: flex;
+    align-items: center;
+}
+
+.station-image-container {
+    width: 80px;
+    height: auto;
+    margin-right: 1rem;
+}
+
+.station-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.station-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.station-details p {
+    margin: 0;
+}
+
+.station-details .dj-name {
+    font-weight: bold;
+}
+
+.station-image {
+    width: 11rem;
+    height: auto;
+    border-radius: 5px;
+}
+
+.station-image-container {
+    width: 80px;
+    height: auto;
+    margin-right: 1rem;
+}
+
+.station-info {
+    flex: 1;
+}
+
+.station-info p {
+    margin: 0;
+}
+
+.station-info .dj-name {
+    font-weight: bold;
+}
+
+.station-info .playlist-length {
+    font-size: 0.9rem;
+}
+
+.station-section a {
+    background-color: rgb(21, 21, 21);
+    padding: 0;
+    margin: 0;
+    color: white;
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: 1fr 10fr .5fr;
+}
+
+.station-section a:hover {
+    background-color: rgb(40, 40, 40);
+}
+
+.station-section .station-name {
+    font-size: 1.25rem;
+}
+
+.station-section .dj-name {
+    font-size: 1.15rem;
+}
+
+.station-section h2 {
+    font-size: 2em;
+    padding-left: 2rem;
+    text-decoration: none;
+}
+
+.feet {
+    display: grid;
+    grid-template-columns: 1fr .1fr;
+    margin-top: 150px;
+    padding: 15px;
+    background-color: rgb(40, 40, 40);
+}
+
+.feet div {
+    text-align: center;
+}
+
+.col2 {
+    display: grid;
+    align-items: end;
+    grid-template-columns: 2fr 2fr 1fr;
+}
+
+.Day {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.date {
+    color: white;
+    display: grid;
+    grid-template-columns:  1fr 1.5fr .5fr;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.leftbutton {
+    padding-left: 120px;
+    color: white;
+}
+
+.date2 {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.socials {
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(21, 21, 21);
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.socials a {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(28, 28, 28);
+    margin: 5px;
+    padding: 5px;
+}
+
+.socials a:hover {
+    background-color: rgb(40, 40, 40);
+    border-radius: 5px;
+}
+
+.socials img {
+    width: 1em;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.header {
+    width: 100%;
+    height: 100vh;
+    background: black;
+}
+
+.main-page {
+    flex-grow: 1;
+}
+
+.side-nav {
+    width: 250px;
+    height: 100%;
+    background: rgb(28, 28, 28);
+    padding: 20px 30px;
+}
+
+.logo {
+    display: block;
+}
+
+.logo-img {
+    width: 180px;
+}
+
+.nav-links {
+    list-style: none;
+    position: relative;
+}
+
+.nav-links li {
+    padding: 10px 0;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li a i {
+    font-size: 22px;
+    margin-right: 20px;
+}
+
+.active {
+    background: purple;
+    width: 100%;
+    height: 47px;
+    position: absolute;
+    left: 0;
+    top: 1.2%;
+    z-index: -1;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.4);
+    display: none;
+    transition: top 0.5s;
+}
+
+.nav-links li:hover a {
+    color: white;
+    transition: .3s;
+}
+
+.nav-links li:hover ~ .active {
+    display: block;
+}
+
+.nav-links li:nth-child(1):hover ~ .active {
+    top: 1.2%;
+}
+
+.nav-links li:nth-child(2):hover ~ .active {
+    top: 13.7%;
+}
+
+.nav-links li:nth-child(3):hover ~ .active {
+    top: 26.2%;
+}
+
+.nav-links li:nth-child(4):hover ~ .active {
+    top: 38.7%;
+}
+
+.nav-links li:nth-child(5):hover ~ .active {
+    top: 51.2%;
+}
+
+.nav-links li:nth-child(6):hover ~ .active {
+    top: 63.7%;
+}
+
+.nav-links li:nth-child(7):hover ~ .active {
+    top: 76.2%;
+}
+
+.nav-links li:nth-child(8):hover ~ .active {
+    top: 88.7%;
+}
+
+.audiobutton{
+    color:white;
+}
+
+.playlist-container {
+    padding: 1.5rem;
+    margin: 1rem;
+    color: white;
+    background-color: grey;
+    width: 11em;
+}
+
+
+
+.playlists {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.audiofile{
+    width: 180px;
+}
