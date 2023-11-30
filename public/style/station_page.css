@@ -1,0 +1,135 @@
+.right-station{
+    display: grid;
+    grid-template-rows: 1fr 8fr;
+    color: white;
+}
+
+.station-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgb(28, 28, 28);
+    border-radius: .75em;
+}
+
+.station-info {
+    text-align: center;
+    position: relative;
+}
+
+.station-info div{
+    width: 50%;
+    height: auto;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    display: inline-block;
+}
+
+.station-info ul{
+    list-style-type: none;
+    margin: 0;
+}
+
+.user-buttons {
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.user-buttons button{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	outline: inherit;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    margin: .5em;
+    width: 9em;
+    height: 3.5em;;
+    border-radius: .75em;
+    font-size: 1rem;
+}
+
+.user-buttons button:hover {
+    cursor: pointer;
+    background-color: rgb(40, 40, 40);
+}
+
+.profile-feat #profile-pic {
+    width: 6em;
+}
+
+.user-buttons img{
+    width: 25px;
+    height: 25px;
+}
+
+.station-body .station-logo{
+    text-align: center;
+}
+
+.station-body h2{
+    font-size: 2em;
+    padding-left: 2rem;
+    text-decoration: none;
+}
+
+.scrollable {
+    display: grid;
+    grid-auto-rows: min-content;
+    height: auto;
+    /* overflow-y: scroll; */
+    color: white;
+}
+
+.station-body img{
+    width: 50%;
+    border-radius: 10px;
+}
+
+.station-playbar {
+    align-self: center;
+    justify-self: center;
+}
+
+.station-playbar button{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	outline: inherit;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    margin: .5em;
+    width: 9em;
+    height: 3.5em;;
+    border-radius: .75em;
+    font-size: 1rem;
+}
+
+.station-playbar button:hover {
+    cursor: pointer;
+}
+
+.station-playbar #play {
+    width: 2.3em;
+    height: 2.3em;
+    padding: .5em;
+}
+
+.station-playbar button:hover {
+    background-color: rgb(40, 40, 40);
+}
+
+.station-playbar img {
+    padding: .75em;
+    width: 25px;
+    height: 25px;
+}

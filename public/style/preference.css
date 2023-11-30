@@ -1,0 +1,254 @@
+* {
+    font-family:monospace;
+}
+
+body{
+    background-color: black;
+}
+
+.container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 3fr;
+}
+
+.left {
+    border-radius: .75em;
+    background-color: rgb(28, 28, 28);
+}
+
+.left aside{
+    height: 75%;
+}
+
+.left .logo-search{
+    height: 25%;
+}
+
+.right {
+    border-radius: .75em;
+    background-color: rgb(21, 21, 21);
+}
+
+.logo-search {
+    display: grid;
+    /* height: 200px; */
+    /* border: 1px solid black; */
+}
+
+.logo-search img, .logo-search a{
+    align-self: center;
+    justify-self: center;
+    width: 150px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.user-feat {
+    display: grid;
+    grid-row: 2;
+    grid-column: 1;
+    grid-auto-rows: min-content;
+}
+
+.user-feat div {
+    display: inline-block;
+    text-align: center;
+}
+
+.user-feat div{
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+.user-feat p {
+    margin-left: .75rem;
+    display: inline-block;
+    text-align: center;
+}
+
+.user-feat a{
+    margin: .75em;
+    position: relative;
+    align-self: center;
+    justify-self: center;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    width: 90%;
+    color: white;
+    border-radius: 5px;
+}
+
+.user-feat div:hover, .user-feat a:hover {
+    background-color: rgb(40, 40, 40);
+}
+
+.user-feat img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 2em;
+}
+
+.profile-feat {
+    border-radius: .75em;
+    background-color: rgb(28, 28, 28);
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr 2fr 2fr 1fr;
+}
+
+.profile-feat button{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	outline: inherit;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    margin: .5em;
+    width: 9em;
+    height: 3.5em;;
+    border-radius: .75em;
+    font-size: 1rem;
+}
+
+.profile-feat button:hover {
+    cursor: pointer;
+}
+
+.profile-feat #play {
+    width: 2.3em;
+    height: 2.3em;
+    padding: 0;
+}
+
+.profile-feat #profile-pic {
+    width: 6em;
+}
+
+.profile-feat button:hover {
+    background-color: rgb(40, 40, 40);
+}
+
+.profile-feat img {
+    padding: .75em;
+    width: 25px;
+    height: 25px;
+}
+
+.body {
+    display: grid;
+}
+
+.body h2{
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.body div section{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.body div section form .first{
+    margin: .75rem;
+}
+
+.body div section form{
+    display: grid;
+    margin: 1.5rem;
+    margin-top: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 2fr 2fr 2fr 2fr 1fr;
+}
+
+.body div section form input, .body div section form label{
+    display: inline-block;
+    /* align-self: center;
+    justify-self: center; */
+}
+
+
+.body .station-section img, .body a{
+    width: 11rem;
+    border-radius: 5px;
+    align-self: center;
+    justify-self: center;
+    height: auto;
+}
+
+.station-section {
+    height: 100vh;
+    overflow-y: scroll;
+    color: white;
+}
+
+.station-section a {
+    background-color: rgb(28, 28, 28);
+    padding: 1.5rem;
+    margin: 1rem;
+    color: white;
+    text-decoration: none;
+    width: 11em;
+}
+
+.station-section a:hover {
+    background-color: rgb(40, 40, 40);
+}
+
+.station-section .station-name {
+    font-size: 1.25rem;
+}
+
+.station-section .dj-name {
+    font-size: 1.15rem;
+}
+
+.station-section h2{
+    font-size: 2em;
+    padding-left: 2rem;
+    text-decoration: none;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.socials {
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(21, 21, 21);
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.socials a {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(28, 28, 28);
+    margin: 5px;
+    padding: 5px;
+}
+
+.socials a:hover {
+    background-color: rgb(40, 40, 40);
+    border-radius: 5px;
+}
+
+.socials img {
+    width: 1em;
+    text-align: center;
+}
+
+.listener-options {
+    background-color: rgb(40, 40, 40);
+}
+
+.listener-options a:hover {
+    background-color: rgb(21, 21, 21);
+}
