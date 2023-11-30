@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://kit.fontawesome.com/06fcb987e4.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="/script/time-slot.js" async></script>
+</head>
+
+<body>
+    <%- include('../partials/sidebar.ejs') %>
+        <main class="main-container">
+            <nav class="topbar" style="border-radius: 10px">
+                <%- include('../partials/prev-next-btn.ejs') %>
+                    <audio controls>
+                        <source type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <%- include('../partials/topnav.ejs') %>
+            </nav>
+            <section class="content-container">
+                <div class="add">
+                    <button id="add-btn">Add</button>
+                    <dialog id="add-dialog">
+                        <form id="addSongForm" action="/time-slot/add/<%= counter %>" method="post">
+                            <h6>Choose a song to add:</h6>
+                            <!-- Display a list of all songs from the database -->
+                            <% songs.forEach((song) => { %>
+
+                                <label>
+                                    <input type="radio" name="selectedSong" value="<%= song._id %>">
+                                    <%= song.name %> by <%= song.artist %>
+                                </label>
+                                <br>
+                            <% }) %>
+                        </form>
+                        <footer>
+                            <button id="no-btn">Cancel</button>
+                            <button id="yes-btn" type="submit">Confirm</button>
+                        </footer>
+                    </dialog>
+                </div>
+
+                <div class="date-playlist">
+                    <form style=" display: inline-flex" id="counterForm" method="post" action="/time-slot">
+                        <input type="hidden" id="counterInput" name="counter" value="<%= counter %>">
+
+                        <button type="submit" name="direction" value="left" class="fa-solid fa-chevron-left"></button>
+                        <p class="customHr">
+                            <%= data[counter].day %>
+                                <%= data[counter].months %>
+                                    <%= data[counter].year %>
+                                        <%= data[counter].startHour %> to <%= data[counter].endHour %>
+                        </p>
+                        <button type="submit" name="direction" value="right" class="fa-solid fa-chevron-right"></button>
+                    </form>
+                </div>
+
+
+                <div class="songs-list">
+                    <!-- Place your dynamic content here using EJS tags -->
+                    <% data[counter].songs.forEach((d)=>{ %>
+                        <div class="songs-item" data-audio="<%=d.audio %>">
+
+                            <img src="<%= d.image %>" alt="Logo">
+
+                            <ul>
+                                <li style="color: antiquewhite;"><b>
+                                        <%= d.name %>
+                                    </b></li>
+                                <li>
+                                    <%d.artist %>
+                                </li>
+                                <li>
+                                    <%= d.duration %>
+                                </li>
+                            </ul>
+                            <button class="play-pause-btn" type="button"><i id="play-pause-icon"
+                                    class="fa-solid fa-play"></i></button>
+                            <form action="/time-slot/delete/<%= counter %>" method="post">
+                                <input type="hidden" name="id" value="<%= d._id %>">
+                                <button type="submit" class="delete">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                            </form>
+
+
+                        </div>
+
+                        <% }) %>
+                </div>
+
+            </section>
+        </main>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://kit.fontawesome.com/06fcb987e4.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="script/calendar.js" async></script>
+</head>
+<body>
+    <%- include('../partials/sidebar.ejs') %>
+    <main class="main-container">
+        <nav class="topbar">
+            <%- include('../partials/prev-next-btn.ejs') %>
+            <%- include('../partials/topnav.ejs') %>
+        </nav>
+        <section class="content-container">
+            <div class="calendar-container">
+                <div class="month">
+                    <ul>
+                        <li class="prev">&#10094;</li>
+                        <li class="next">&#10095;</li>
+                        <li class="current-date">
+                            <p>August</p><br>
+                            <span style="font-size:18px">2023</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="calendar">
+                    <ul class="weekdays">
+                        <li>Mo</li>
+                        <li>Tu</li>
+                        <li>We</li>
+                        <li>Th</li>
+                        <li>Fr</li>
+                        <li>Sa</li>
+                        <li>Su</li>
+                    </ul>
+                    <ul class="days">
+                        <!-- EJS tag for dynamic content goes here -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

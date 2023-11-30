@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/06fcb987e4.js" crossorigin="anonymous"></script>
+    <script src="/script/search.js"></script>
+</head>
+
+<body>
+
+    <%- include('../partials/sidebar.ejs') %>
+
+        <main class="main-container">
+            <nav class="topbar" style="border-radius: 10px">
+                <%- include('../partials/prev-next-btn.ejs') %>
+                    <div class="searchBar">
+                        <form style=" display: inline-flex" action="/search" method="post">
+                            <input id="searchType" type="text" name="search" placeholder="Search..">
+                            <input type="submit" hidden />
+                        </form>
+
+                    </div>
+
+                    <%- include('../partials/topnav.ejs') %>
+            </nav>
+
+            <section class="content-container">
+                <p> Songs </p>
+                <div class="search-container">
+                    <% if (songResults && songResults.length> 0) { %>
+                        <% songResults.forEach(song=> { %>
+                            <div class="search-item"  data-song-id="<%= song._id %>">
+                                <img src="<%= song.image %>"> </img>
+
+                                <h4>
+                                    <%= song.name %>
+                                </h4>
+                                <p>
+                                    <%= song.artist %>
+                                </p>
+
+                                <div class="add-playlist">
+                                    <span class="fa-solid fa-plus"></span>
+                                </div>
+                            </div>
+                            <% }); %>
+                                <% } else { %>
+                                    <p>No initial song results available</p>
+                                    <% } %>
+                </div>
+                <div class="add">
+                    <dialog id="add-dialog">
+                        <form id="addSongForm" action="/search/add" method="post">
+                            <h6>Choose a playlist to add the song:</h6>
+                            <!-- Display a list of all playlists from the database -->
+                            <% playlistResults.forEach(playlist=> { %>
+                                <label>
+                                    <input type="radio" name="selectedPlaylist" value="<%= playlist.id %>">
+                                    ID: <%= playlist.id %> |
+                                    Day: <%= playlist.day %> |
+                                        From: <%= playlist.startHour %>
+                                            To <%= playlist.endHour %>
+                                </label>
+                                <br>
+                                <% }); %>
+                                    <!-- Add a hidden input for the songId -->
+                                    <input type="hidden" id="songIdInput" name="songId" value="">
+                        </form>
+                        <footer>
+                            <button id="no-btn">Cancel</button>
+                            <button id="yes-btn" type="submit">Confirm</button>
+                        </footer>
+                    </dialog>
+                </div>
+            </section>
+
+        </main>
+
+</body>
+
+</html>
